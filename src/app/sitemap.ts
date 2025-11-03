@@ -1,37 +1,41 @@
 import { MetadataRoute } from 'next';
-// IMPOR DARI FOLDER '.velite' (HASIL BUILD)
-// 1. Impor tipe 'Project' dari Velite (DENGAN PATH YANG BENAR)
-import { projects, type Project } from '../../.velite'; 
-import { siteUrl } from '@/lib/site'; 
+import { projects, type Post, posts } from '../../.velite'; // <-- 1. Impor 'posts' dan 'Post'
+import { siteUrl } from '@/lib/site';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   // 1. Buat URL statis (Home, Kontak)
-  // TAMBAHKAN TIPE EKSPLISIT DI SINI
   const staticRoutes: MetadataRoute.Sitemap = [
     {
       url: siteUrl,
       lastModified: new Date(),
-      changeFrequency: 'yearly',
+      changeFrequency: 'daily', // <-- 2. Diubah dari 'yearly' menjadi 'daily'
       priority: 1,
     },
     {
       url: `${siteUrl}/kontak`,
       lastModified: new Date(),
-      changeFrequency: 'monthly',
+      changeFrequency: 'yearly', // <-- 3. Diubah dari 'monthly' menjadi 'yearly'
       priority: 0.8,
     },
   ];
 
-  // 2. Buat URL dinamis dari Velite
-  // TAMBAHKAN TIPE EKSPLISIT DI SINI
-  const projectRoutes: MetadataRoute.Sitemap = projects.map((project: Project) => ({
-    url: `${siteUrl}${project.url}`, // project.url udah bener ('/projects/slug')
-    lastModified: new Date(project.date), // Pakai tanggal proyek
+  // 2. Buat URL dinamis dari Proyek
+  const projectRoutes: MetadataRoute.Sitemap = projects.map((project) => ({
+    url: `${siteUrl}${project.url}`,
+    lastModified: new Date(project.date),
     changeFrequency: 'weekly',
     priority: 0.9,
   }));
 
-  // 3. Gabungin semuanya
-  return [...staticRoutes, ...projectRoutes];
+  // 3. BUAT URL DINAMIS DARI BLOG (INI YANG BARU)
+  const postRoutes: MetadataRoute.Sitemap = posts.map((post: Post) => ({
+    url: `${siteUrl}${post.url}`, // Asumsi 'post.url' ada di Velite (/blog/slug)
+    lastModified: new Date(post.date),
+    changeFrequency: 'monthly', // Blog biasanya diupdate bulanan
+    priority: 0.7,
+  }));
+
+  // 4. Gabungin semuanya
+  return [...staticRoutes, ...projectRoutes, ...postRoutes]; // <-- 4. Tambahkan postRoutes
 }
 
