@@ -18,7 +18,11 @@ export const metadata: Metadata = {
   },
   // 2. Ganti 'description'
   description:
-    "Portofolio web Mattrizz, seorang Web Developer yang hobi bikin aplikasi 'uhuy' pakai Next.js.",
+    "Portofolio pribadi Mattrizz (Ahmad Rizal Baehaqi), seorang Web Developer yang hobi bikin aplikasi 'uhuy' pakai Next.js.",
+
+  verification: {
+    google: "UwNfNzT2K_X0ZDX6GkLPTFnIvVe9DJfUNcjUSj2IMqA",
+  },
 };
 
 export default function RootLayout({
