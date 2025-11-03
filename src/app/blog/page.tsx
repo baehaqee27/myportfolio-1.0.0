@@ -1,5 +1,4 @@
-// src/app/blog/page.tsx
-import { posts } from "velite"; // <-- Import 'posts', bukan 'projects'
+import { posts } from "../../../.velite"; // <-- PERBAIKAN: Impor dari .velite
 import { Metadata } from "next";
 import Link from "next/link";
 

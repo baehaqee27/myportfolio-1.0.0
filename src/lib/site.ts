@@ -2,7 +2,7 @@
 
 // GANTI INI dengan URL aslimu nanti pas deploy
 export const siteUrl = process.env.NODE_ENV === 'production' 
-  ? 'https://ahmadrizalbaehaqi.my.id' // <-- URL PRODUKSI
+  ? 'https://mattrizz-portfolio.vercel.app' // <-- URL PRODUKSI
   : 'http://localhost:3000';         // <-- URL DEVELOPMENT
 
 export const siteConfig = {

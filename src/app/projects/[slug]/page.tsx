@@ -1,6 +1,4 @@
-// src/app/projects/[slug]/page.tsx
-
-import { projects } from "velite";
+import { projects } from "../../../../.velite"; // <-- PERBAIKAN #1: Impor dari .velite
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { mdxComponents } from "@/components/MdxComponents";
@@ -19,7 +17,7 @@ interface ProjectPageProps {
 export default async function ProjectPage({ params }: ProjectPageProps) {
   // 'params' itu objek biasa, bukan promise.
   // Langsung ambil 'slug' darinya.
-  const { slug } = params;
+  const { slug } = await params; // <-- PERBAIKAN #2: Tambahkan 'await'
   const project = projects.find((p) => p.slug === slug);
 
   if (!project) {
