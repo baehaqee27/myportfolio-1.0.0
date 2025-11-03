@@ -10,11 +10,16 @@ import { Badge } from "@/components/ui/badge";
 
 // ... (Interface, generateMetadata, generateStaticParams... udah bener) ...
 // ...
-
+// Tambahkan ini di atas komponen kamu
+interface ProjectPageProps {
+  params: {
+    slug: string;
+  };
+}
 export default async function ProjectPage({ params }: ProjectPageProps) {
-  // ... (logic 'find project'-nya udah bener) ...
-  const resolvedParams = await params;
-  const { slug } = resolvedParams;
+  // 'params' itu objek biasa, bukan promise.
+  // Langsung ambil 'slug' darinya.
+  const { slug } = params;
   const project = projects.find((p) => p.slug === slug);
 
   if (!project) {
