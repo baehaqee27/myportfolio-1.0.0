@@ -1,10 +1,10 @@
 // velite.config.js
 
-// PERBAIKAN: Hapus 'date-fns'. Biarkan komponen Next.js yang format tanggal.
+// Gunakan sintaks CommonJS (require)
 const { defineConfig, s } = require('velite')
-// const { format } = require('date-fns') // <-- DIHAPUS
+// JANGAN import date-fns di sini
 
-// PERBAIKAN: Gunakan 'module.exports'
+// Gunakan 'module.exports'
 module.exports = defineConfig({
   root: 'content',
   collections: {
@@ -27,7 +27,7 @@ module.exports = defineConfig({
             ...data,
             slug: realSlug,
             url: `/projects/${realSlug}`,
-            // publishedAt: format(new Date(data.date), 'MMMM dd, yyyy'), // <-- DIHAPUS
+            // Hapus 'publishedAt', format tanggal di komponen React
           }
         }),
     },
@@ -48,13 +48,13 @@ module.exports = defineConfig({
             ...data,
             slug: realSlug,
             url: `/blog/${realSlug}`,
-            // publishedAt: format(new Date(data.date), 'MMMM dd, yyyy'), // <-- DIHAPUS
+            // Hapus 'publishedAt', format tanggal di komponen React
           }
         }),
     }
   },
 
-  // Ini biarkan saja, ini yang memperbaiki error pertama
+  // Ini adalah KUNCI yang hanya berfungsi di file .js
   esbuildOptions: (options) => {
     options.external = [...(options.external ?? []), 'velite']
     return options
