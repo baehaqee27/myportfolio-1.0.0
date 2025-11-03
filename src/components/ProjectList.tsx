@@ -50,7 +50,7 @@ export default function ProjectList({ projects }: ProjectListProps) {
                      Kita tambahin 'mt-4' (margin-top)
               */}
               <div className="flex flex-wrap gap-2 mt-4">
-                {project.stack.map((tech) => (
+                {project.stack.map((tech: string) => (
                   <Badge key={tech} variant="secondary">
                     {tech}
                   </Badge>

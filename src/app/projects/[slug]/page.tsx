@@ -34,7 +34,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
         {/* 2. TAMBAHKAN TECH STACK BADGE DI SINI */}
         <div className="flex flex-wrap gap-2 mt-4">
-          {project.stack.map((tech) => (
+          {project.stack.map((tech: string) => (
             <Badge key={tech} variant="secondary">
               {tech}
             </Badge>
