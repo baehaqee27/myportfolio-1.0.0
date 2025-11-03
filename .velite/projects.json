@@ -1,0 +1,17 @@
+[
+  {
+    "title": "Proyek Pertama Saya",
+    "date": "2025-10-25T00:00:00.000Z",
+    "description": "Ini adalah deskripsi singkat proyek pertama saya.",
+    "thumbnail": "/images/profile.png",
+    "stack": [
+      "Next.js",
+      "Tailwind",
+      "Velite"
+    ],
+    "slug": "project-pertama",
+    "content": "# Halo Dunia!\n\nIni adalah isi dari file MDX saya. Saya bisa nulis Markdown\ndan juga...\n\n<button className=\"bg-blue-500 text-white p-2 rounded\">Komponen React!</button>\n\n## Ini Sub-Judul\n\nDi bawah ini adalah gambar yang di-render pakai Markdown standar.\n\n![Contoh Gambar Proyek](/images/profile.png)\n\nKamu bisa nulis paragraf lagi di bawah gambar.",
+    "url": "/projects/project-pertama",
+    "publishedAt": "October 25, 2025"
+  }
+]
