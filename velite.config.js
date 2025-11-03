@@ -1,14 +1,14 @@
-// velite.config.ts
+// velite.config.js
 
-// PERBAIKAN: Impor 'defineConfig' dan 's'. (Tidak ada 'defineCollection')
-import { defineConfig, s } from 'velite'
-import { format } from 'date-fns'
+// PERBAIKAN: Gunakan sintaks CommonJS (require)
+const { defineConfig, s } = require('velite')
+const { format } = require('date-fns')
 
-// PERBAIKAN: Definisikan koleksi LANGSUNG di dalam 'defineConfig'
-export default defineConfig({
+// PERBAIKAN: Gunakan 'module.exports'
+module.exports = defineConfig({
   root: 'content',
   collections: {
-    // Ini adalah koleksi 'projects' kamu
+    // Koleksi 'projects'
     projects: {
       name: 'Project',
       pattern: 'projects/**/*.mdx',
@@ -21,17 +21,18 @@ export default defineConfig({
           slug: s.path(),
           content: s.raw()
         })
-        .transform((data: any) => { // Beri tipe 'any' agar TypeScript tidak error
+        .transform((data) => { // Hapus ': any'
           const realSlug = data.slug.split('/').pop()
           return {
             ...data,
             slug: realSlug,
             url: `/projects/${realSlug}`,
-            publishedAt: format(new Date(data.date), 'MMMM dd, yyyS'),
+            // FIX TYPO: 'yyyy' bukan 'yyyS'
+            publishedAt: format(new Date(data.date), 'MMMM dd, yyyy'),
           }
         }),
     },
-    // Ini adalah koleksi 'posts' kamu
+    // Koleksi 'posts'
     posts: {
       name: 'Post',
       pattern: 'posts/**/*.mdx',
@@ -42,23 +43,22 @@ export default defineConfig({
           slug: s.path(),
           content: s.raw()
         })
-        .transform((data: any) => { // Beri tipe 'any' agar TypeScript tidak error
+        .transform((data) => { // Hapus ': any'
           const realSlug = data.slug.split('/').pop()
           return {
             ...data,
             slug: realSlug,
             url: `/blog/${realSlug}`,
-            publishedAt: format(new Date(data.date), 'MMMM dd, yyyS'),
+            // FIX TYPO: 'yyyy' bukan 'yyyS'
+            publishedAt: format(new Date(data.date), 'MMMM dd, yyyy'),
           }
         }),
     }
   },
 
-  // Kita biarkan 'esbuildOptions' untuk jaga-jaga
-  // dari error bundling Vercel.
-  esbuildOptions: (options: any) => { // Beri tipe 'any'
+  // Ini adalah KUNCI-nya. Semoga kali ini dibaca.
+  esbuildOptions: (options) => { // Hapus ': any'
     options.external = [...(options.external ?? []), 'velite']
     return options
   },
 })
-
