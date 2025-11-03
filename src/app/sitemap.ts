@@ -1,11 +1,13 @@
-// src/app/sitemap.ts
 import { MetadataRoute } from 'next';
-import { projects } from 'velite'; 
+// IMPOR DARI FOLDER '.velite' (HASIL BUILD)
+// 1. Impor tipe 'Project' dari Velite (DENGAN PATH YANG BENAR)
+import { projects, type Project } from '../../.velite'; 
 import { siteUrl } from '@/lib/site'; 
 
 export default function sitemap(): MetadataRoute.Sitemap {
   // 1. Buat URL statis (Home, Kontak)
-  const staticRoutes = [
+  // TAMBAHKAN TIPE EKSPLISIT DI SINI
+  const staticRoutes: MetadataRoute.Sitemap = [
     {
       url: siteUrl,
       lastModified: new Date(),
@@ -21,7 +23,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ];
 
   // 2. Buat URL dinamis dari Velite
-  const projectRoutes = projects.map((project) => ({
+  // TAMBAHKAN TIPE EKSPLISIT DI SINI
+  const projectRoutes: MetadataRoute.Sitemap = projects.map((project: Project) => ({
     url: `${siteUrl}${project.url}`, // project.url udah bener ('/projects/slug')
     lastModified: new Date(project.date), // Pakai tanggal proyek
     changeFrequency: 'weekly',
@@ -31,3 +34,4 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // 3. Gabungin semuanya
   return [...staticRoutes, ...projectRoutes];
 }
+
