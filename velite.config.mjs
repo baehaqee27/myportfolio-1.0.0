@@ -1,8 +1,10 @@
 // velite.config.mjs
-import { defineConfig, defineCollection, s } from 'velite/schema'
+
+// --- PERBAIKAN 1: Kembalikan import ke 'velite' ---
+import { defineConfig, defineCollection, s } from 'velite'
 import { format } from 'date-fns'
 
-// 1. Definisikan skema 'projects' (INI UDAH ADA, BIARIN AJA)
+// 1. Definisikan skema 'projects'
 const projects = defineCollection({
   name: 'Project',
   pattern: 'projects/**/*.mdx',
@@ -26,7 +28,7 @@ const projects = defineCollection({
     }),
 })
 
-// 2. TAMBAHKAN SKEMA BARU: 'posts' (mirip banget!)
+// 2. Definisikan skema 'posts'
 const posts = defineCollection({
   name: 'Post',
   pattern: 'posts/**/*.mdx', // <-- Lokasi foldernya
@@ -48,8 +50,15 @@ const posts = defineCollection({
     }),
 })
 
-// 3. Daftarkan 'posts' di 'collections'
+// 3. Daftarkan 'collections'
 export default defineConfig({
   root: 'content',
-  collections: { projects, posts }, // <-- TAMBAHKAN 'posts' DI SINI
+  collections: { projects, posts },
+
+  // --- PERBAIKAN 2: Tambahkan blok ini ---
+  // Ini untuk memperbaiki error "No matching export" dari log pertama
+  esbuildOptions: (options) => {
+    options.external = [...(options.external ?? []), 'velite']
+    return options
+  },
 })
