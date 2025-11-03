@@ -1,5 +1,5 @@
 // velite.config.mjs
-import { defineConfig, defineCollection, s } from 'velite'
+import { defineConfig, defineCollection, s } from 'velite/schema'
 import { format } from 'date-fns'
 
 // 1. Definisikan skema 'projects' (INI UDAH ADA, BIARIN AJA)
