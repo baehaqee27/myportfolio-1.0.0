@@ -6,6 +6,7 @@ import { motion, Variants } from "framer-motion"; // <-- 1. Import 'Variants'
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
+import { siteConfig } from "@/config/site";
 
 // 2. Definisikan variant untuk GAMBAR (tanpa delay)
 const imageFadeInUp: Variants = {
@@ -27,51 +28,71 @@ const textFadeInUp: Variants = {
   },
 };
 
+import { BackgroundBeams } from "@/components/ui/background-beams";
+import BioWithReadMore from "./BioWithReadMore";
+
+// ... (variants sama) ...
+
 export default function HeroSection() {
   return (
-    <section className="container mx-auto p-8 py-20 md:py-32">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+    <section className="relative w-full py-20 md:py-32 overflow-hidden flex flex-col items-center text-center">
+      <BackgroundBeams />
+
+      <div className="container mx-auto p-8 relative z-10 flex flex-col items-center gap-8 max-w-4xl">
         {/* GAMBAR */}
         <motion.div
-          className="flex justify-center items-center md:order-2"
-          variants={imageFadeInUp} // <-- 4. Pakai variant GAMBAR
+          variants={imageFadeInUp}
           initial="hidden"
           animate="visible"
+          className="relative"
         >
-          <Avatar className="w-64 h-64 md:w-80 md:h-80 border-4 border-primary">
-            <AvatarImage src="/images/profile.png" alt="Foto Profil Mattrizz" />
-            <AvatarFallback className="text-6xl">AK</AvatarFallback>
+          <div className="absolute inset-0 bg-primary/20 blur-[100px] rounded-full scale-150"></div>
+          <Avatar className="w-40 h-40 md:w-56 md:h-56 border-2 border-primary/50 shadow-[0_0_50px_rgba(0,240,255,0.2)]">
+            <AvatarImage
+              src={siteConfig.author.avatar}
+              alt={`Foto Profil ${siteConfig.author.name}`}
+            />
+            <AvatarFallback className="text-4xl bg-black text-primary">
+              AK
+            </AvatarFallback>
           </Avatar>
         </motion.div>
 
         {/* TEKS */}
         <motion.div
-          className="flex flex-col gap-4 md:order-1 
-                     text-center md:text-left"
-          variants={textFadeInUp} // <-- 5. Pakai variant TEKS
+          className="flex flex-col gap-6 items-center"
+          variants={textFadeInUp}
           initial="hidden"
           animate="visible"
-          // <-- 6. 'transition' prop HILANG dari sini
         >
-          {/* ... sisa kode h1, p, button ... */}
+          <div className="space-y-2">
+            <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-6">
+              <span className="text-foreground">Halo, Saya </span>
+              <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-purple-500 drop-shadow-[0_0_20px_rgba(0,240,255,0.5)]">
+                {siteConfig.author.name}
+              </span>
+            </h1>
 
-          {/* SARAN NAMA: */}
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight">
-            Halo, Saya Mattrizz
-          </h1>
-          <p className="text-lg text-muted-foreground">
-            Saya (Ahmad Rizal Baehaqi) seorang Web Developer yang hobi bikin
-            aplikasi web "cachy" dan "uhuy" pakai Next.js.
-          </p>
-          <div
-            className="flex gap-4 mt-4 
-                          justify-center md:justify-start"
-          >
-            <Button asChild size="lg">
-              <Link href="#projects">Lihat Proyek</Link>
+            {/* Bio dengan Read More */}
+            <BioWithReadMore bio={siteConfig.author.bio} />
+          </div>
+
+          <div className="flex flex-wrap justify-center gap-4">
+            <Button
+              asChild
+              size="lg"
+              className="bg-primary text-black hover:bg-primary/80 hover:shadow-[0_0_20px_rgba(0,240,255,0.5)] transition-all rounded-full px-8"
+            >
+              <Link href={siteConfig.navLinks[1].href}>Eksplor Karya</Link>
             </Button>
-            <Button asChild size="lg" variant="outline">
-              <Link href="/kontak">Hubungi Saya</Link>
+            <Button
+              asChild
+              size="lg"
+              variant="outline"
+              className="border-primary/50 text-primary hover:bg-primary/10 rounded-full px-8"
+            >
+              <Link href={siteConfig.navLinks[3].href}>Ayo Collab</Link>
             </Button>
           </div>
         </motion.div>

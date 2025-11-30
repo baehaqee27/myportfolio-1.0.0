@@ -1,0 +1,32 @@
+---
+title: "Next.js 15 Resmi Dirilis: Apa yang Baru?"
+date: "2024-10-25"
+description: "Mengupas tuntas fitur-fitur terbaru di Next.js 15, mulai dari Turbopack yang stabil hingga peningkatan performa Server Actions."
+published: true
+---
+
+Next.js 15 akhirnya hadir dengan membawa segudang pembaruan yang dinanti-nanti oleh komunitas developer. Fokus utama rilis kali ini adalah stabilitas, performa, dan penyederhanaan API.
+
+## Turbopack: Siap untuk Production
+
+Setelah melalui masa beta yang panjang, **Turbopack** kini dinyatakan stabil untuk pengembangan lokal. Kecepatan *hot module replacement* (HMR) meningkat drastis, membuat pengalaman coding jadi jauh lebih mulus.
+
+> "Kecepatan adalah fitur nomor satu. Dengan Turbopack, kami ingin memastikan developer tidak pernah menunggu build selesai."
+
+## Peningkatan Server Actions
+
+Server Actions di Next.js 15 kini lebih aman dan mudah digunakan. Validasi input menjadi lebih *straightforward*, dan integrasi dengan library form seperti `react-hook-form` semakin seamless.
+
+```typescript
+// Contoh Server Action sederhana
+async function createPost(formData: FormData) {
+  'use server'
+  
+  const title = formData.get('title')
+  await db.post.create({ data: { title } })
+}
+```
+
+## Kesimpulan
+
+Upgrade ke Next.js 15 sangat disarankan bagi kamu yang ingin performa build lebih cepat dan fitur server-side yang lebih matang.

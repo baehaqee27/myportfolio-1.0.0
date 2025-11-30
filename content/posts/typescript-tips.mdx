@@ -1,0 +1,47 @@
+---
+title: "5 Tips TypeScript Lanjutan untuk Kode yang Lebih Aman"
+date: "2024-11-28"
+description: "Tingkatkan kualitas kodemu dengan teknik TypeScript advanced: Generics, Utility Types, dan Type Guards."
+published: true
+---
+
+TypeScript sudah menjadi standar industri. Namun, banyak developer hanya menggunakannya sebatas `any` atau interface sederhana. Mari kita gali lebih dalam.
+
+## 1. Jangan Gunakan `any`, Gunakan `unknown`
+
+`any` mematikan type checking. `unknown` memaksamu untuk melakukan pengecekan tipe sebelum menggunakan variabel tersebut.
+
+```typescript
+function prosesData(data: unknown) {
+  if (typeof data === 'string') {
+    console.log(data.toUpperCase()); // Aman
+  }
+}
+```
+
+## 2. Manfaatkan Utility Types
+
+TypeScript menyediakan banyak utility bawaan seperti `Partial`, `Pick`, `Omit`, dan `Readonly`.
+
+```typescript
+interface User {
+  id: number;
+  name: string;
+  email: string;
+}
+
+// Hanya butuh nama dan email untuk update
+type UpdateUserDTO = Omit<User, 'id'>;
+```
+
+## 3. Custom Type Guards
+
+Buat fungsi khusus untuk memvalidasi tipe data runtime.
+
+```typescript
+function isUser(obj: any): obj is User {
+  return 'email' in obj && 'name' in obj;
+}
+```
+
+Dengan menerapkan tips ini, aplikasi kamu akan jauh lebih *robust* dan minim bug runtime.

@@ -18,7 +18,12 @@ function SubmitButton() {
   const { pending } = useFormStatus(); // 'pending' akan true pas loading
 
   return (
-    <Button type="submit" size="lg" disabled={pending}>
+    <Button
+      type="submit"
+      size="lg"
+      disabled={pending}
+      className="w-full bg-primary text-black hover:bg-primary/80 hover:shadow-[0_0_20px_rgba(0,240,255,0.5)] transition-all font-bold"
+    >
       {pending ? "Mengirim..." : "Kirim Pesan"}
     </Button>
   );
@@ -34,12 +39,16 @@ export default function ContactForm() {
     <form action={formAction} className="space-y-6">
       {/* NAMA */}
       <div className="space-y-2">
-        <Label htmlFor="nama">Nama Lengkap</Label>
+        <Label htmlFor="nama" className="text-foreground font-mono">
+          Nama Lengkap
+        </Label>
         <Input
           type="text"
           id="nama"
           name="nama" // <-- 'name' harus sama dengan skema Zod
           required
+          className="bg-background/50 border-white/10 focus:border-primary focus:ring-primary/20 transition-all duration-300"
+          placeholder="Masukkan nama Anda"
         />
         {/* Tampilkan error validasi */}
         {state.errors?.nama && (
@@ -49,8 +58,17 @@ export default function ContactForm() {
 
       {/* EMAIL */}
       <div className="space-y-2">
-        <Label htmlFor="email">Email</Label>
-        <Input type="email" id="email" name="email" required />
+        <Label htmlFor="email" className="text-foreground font-mono">
+          Email
+        </Label>
+        <Input
+          type="email"
+          id="email"
+          name="email"
+          required
+          className="bg-background/50 border-white/10 focus:border-primary focus:ring-primary/20 transition-all duration-300"
+          placeholder="email@contoh.com"
+        />
         {state.errors?.email && (
           <p className="text-sm text-destructive">{state.errors.email[0]}</p>
         )}
@@ -58,8 +76,17 @@ export default function ContactForm() {
 
       {/* PESAN */}
       <div className="space-y-2">
-        <Label htmlFor="pesan">Pesan Anda</Label>
-        <Textarea id="pesan" name="pesan" rows={6} required />
+        <Label htmlFor="pesan" className="text-foreground font-mono">
+          Pesan Anda
+        </Label>
+        <Textarea
+          id="pesan"
+          name="pesan"
+          rows={6}
+          required
+          className="bg-background/50 border-white/10 focus:border-primary focus:ring-primary/20 transition-all duration-300 resize-none"
+          placeholder="Tulis pesan Anda di sini..."
+        />
         {state.errors?.pesan && (
           <p className="text-sm text-destructive">{state.errors.pesan[0]}</p>
         )}
@@ -71,8 +98,10 @@ export default function ContactForm() {
       {/* Tampilkan Pesan Sukses/Gagal */}
       {state.message && (
         <p
-          className={`text-sm ${
-            state.errors ? "text-destructive" : "text-primary"
+          className={`text-sm font-mono p-4 rounded-lg ${
+            state.errors
+              ? "text-destructive bg-destructive/10 border border-destructive/20"
+              : "text-primary bg-primary/10 border border-primary/20"
           }`}
         >
           {state.message}

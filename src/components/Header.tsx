@@ -15,6 +15,7 @@ import { Button } from "./ui/button";
 
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import { siteConfig } from "@/config/site";
 
 export default function Header() {
   const [isSheetOpen, setIsSheetOpen] = useState(false);
@@ -24,8 +25,8 @@ export default function Header() {
   const mobileBaseLinkClasses = "text-lg transition-colors hover:text-primary";
 
   return (
-    <header className="border-b sticky top-0 bg-background/95 backdrop-blur z-10">
-      <nav className="container mx-auto p-4 flex justify-between items-center">
+    <header className="fixed top-4 left-0 right-0 z-50 flex justify-center">
+      <nav className="glass-panel rounded-full px-8 py-4 flex justify-between items-center w-[90%] md:w-auto md:gap-12">
         <Link href="/" className="text-2xl font-bold hover:text-primary">
           PortofolioKu
         </Link>
@@ -33,42 +34,20 @@ export default function Header() {
         {/* NAVIGASI DESKTOP */}
         <div className="hidden md:flex items-center gap-6">
           <ul className="flex gap-6">
-            <li>
-              <Link
-                href="/"
-                className={`${baseLinkClasses} ${
-                  pathname === "/"
-                    ? "text-primary font-medium"
-                    : "text-muted-foreground"
-                }`}
-              >
-                Home
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/contact"
-                className={`${baseLinkClasses} ${
-                  pathname === "/contact"
-                    ? "text-primary font-medium"
-                    : "text-muted-foreground"
-                }`}
-              >
-                Contact
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/blog"
-                className={`${baseLinkClasses} ${
-                  pathname === "/blog"
-                    ? "text-primary font-medium"
-                    : "text-muted-foreground"
-                }`}
-              >
-                Blog
-              </Link>
-            </li>
+            {siteConfig.navLinks.map((link) => (
+              <li key={link.href}>
+                <Link
+                  href={link.href}
+                  className={`${baseLinkClasses} ${
+                    pathname === link.href
+                      ? "text-primary font-medium"
+                      : "text-muted-foreground"
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              </li>
+            ))}
           </ul>
           <ThemeToggle />
         </div>
@@ -89,39 +68,20 @@ export default function Header() {
                 <div className="border-t my-4"></div>
               </SheetHeader>
               <div className="grid gap-4 px-4 mx-4">
-                <Link
-                  href="/"
-                  className={`${mobileBaseLinkClasses} ${
-                    pathname === "/"
-                      ? "text-primary font-medium"
-                      : "text-muted-foreground"
-                  }`}
-                  onClick={() => setIsSheetOpen(false)}
-                >
-                  Home
-                </Link>
-                <Link
-                  href="/contact"
-                  className={`${mobileBaseLinkClasses} ${
-                    pathname === "/contact"
-                      ? "text-primary font-medium"
-                      : "text-muted-foreground"
-                  }`}
-                  onClick={() => setIsSheetOpen(false)}
-                >
-                  Contact
-                </Link>
-                <Link
-                  href="/blog"
-                  className={`${mobileBaseLinkClasses} ${
-                    pathname === "/blog"
-                      ? "text-primary font-medium"
-                      : "text-muted-foreground"
-                  }`}
-                  onClick={() => setIsSheetOpen(false)}
-                >
-                  Blog
-                </Link>
+                {siteConfig.navLinks.map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className={`${mobileBaseLinkClasses} ${
+                      pathname === link.href
+                        ? "text-primary font-medium"
+                        : "text-muted-foreground"
+                    }`}
+                    onClick={() => setIsSheetOpen(false)}
+                  >
+                    {link.label}
+                  </Link>
+                ))}
 
                 <div className="border-t my-4"></div>
 

@@ -1,14 +1,13 @@
-import { MetadataRoute } from 'next';
-import { siteUrl } from '@/lib/site'; // <-- Import URL kita
+import { MetadataRoute } from "next";
+import { siteConfig } from "@/config/site";
 
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: {
-      userAgent: '*', // Berlaku untuk semua 'robot' (Google, Bing, dll)
-      allow: '/',     // Boleh 'crawl' semua halaman
-      // TAMBAHKAN ATURAN DISALLOW (BEST PRACTICE)
-      disallow: ['/_next/', '/_vercel/'], 
+      userAgent: "*",
+      allow: "/",
+      disallow: ["/_next/", "/_vercel/"],
     },
-    sitemap: `${siteUrl}/sitemap.xml`, // <-- Tunjukin lokasi sitemap
+    sitemap: `${siteConfig.url}/sitemap.xml`,
   };
 }

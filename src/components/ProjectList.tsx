@@ -4,14 +4,13 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { projects } from "velite";
+import { Project } from "@/lib/mdx";
 
 // 1. IMPORT Badge
 import { Badge } from "@/components/ui/badge";
 
-type ProjectType = (typeof projects)[number];
 type ProjectListProps = {
-  projects: ProjectType[];
+  projects: Project[];
 };
 
 // ... (variants animasinya biarin aja, udah bener) ...
@@ -36,22 +35,28 @@ export default function ProjectList({ projects }: ProjectListProps) {
             {/* 2. Ubah <article> biar 'flex flex-col'
                    Ini penting biar stack-nya bisa nempel di bawah
             */}
-            <article className="border rounded-lg p-4 h-full hover:shadow-lg transition-shadow flex flex-col justify-between">
+            <article className="glass-panel rounded-xl p-6 h-full hover:border-primary/50 hover:shadow-[0_0_20px_rgba(0,240,255,0.2)] transition-all duration-300 flex flex-col justify-between group">
               {/* Bagian Atas (Teks) */}
               <div>
-                <h2 className="text-2xl font-semibold">{project.title}</h2>
-                <p className="text-sm text-muted-foreground mt-1">
-                  {project.publishedAt}
+                <h2 className="text-2xl font-bold font-mono group-hover:text-primary transition-colors">
+                  {project.title}
+                </h2>
+                <p className="text-sm text-muted-foreground mt-2 font-mono">
+                  {project.date}
                 </p>
-                <p className="mt-3">{project.description}</p>
+                <p className="mt-4 text-muted-foreground/80 leading-relaxed">
+                  {project.description}
+                </p>
               </div>
 
-              {/* 3. Bagian Bawah (Tech Stack)
-                     Kita tambahin 'mt-4' (margin-top)
-              */}
-              <div className="flex flex-wrap gap-2 mt-4">
+              {/* 3. Bagian Bawah (Tech Stack) */}
+              <div className="flex flex-wrap gap-2 mt-6">
                 {project.stack.map((tech: string) => (
-                  <Badge key={tech} variant="secondary">
+                  <Badge
+                    key={tech}
+                    variant="outline"
+                    className="border-primary/20 text-primary/80 bg-primary/5"
+                  >
                     {tech}
                   </Badge>
                 ))}

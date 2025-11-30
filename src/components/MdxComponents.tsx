@@ -18,5 +18,23 @@ const MdxImg = (props: any) => {
 
 // Kumpulkan semua komponen kustom di sini
 export const mdxComponents = {
-  img: MdxImg, // <-- KITA OVERRIDE 'img' (lowercase)
+  img: MdxImg,
+  blockquote: (props: any) => (
+    <blockquote
+      className="border-l-4 border-primary pl-4 py-2 my-4 bg-primary/5 italic rounded-r-lg"
+      {...props}
+    />
+  ),
+  pre: (props: any) => (
+    <pre
+      className="overflow-auto p-4 rounded-lg border border-white/10 my-6 bg-[#282a36] shadow-lg"
+      {...props}
+    />
+  ),
+  code: (props: any) => (
+    <code
+      className="font-mono text-sm bg-primary/10 text-primary px-1 py-0.5 rounded"
+      {...props}
+    />
+  ),
 };

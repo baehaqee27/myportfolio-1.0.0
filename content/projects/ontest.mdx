@@ -1,0 +1,32 @@
+---
+title: "OnTest"
+date: "2024-08-15"
+description: "Platform ujian online dengan sistem keamanan tinggi, pengacakan soal otomatis, dan fitur anti-curang."
+thumbnail: "/images/projects/ontest.png"
+stack: ["MongoDB", "Express", "React", "Node.js"]
+demo: "https://ontest.netlify.app"
+published: true
+---
+
+**OnTest** adalah solusi modern untuk pelaksanaan ujian online yang jujur dan efisien. Dibangun dengan stack MERN, aplikasi ini menjamin integritas ujian melalui berbagai fitur keamanan.
+
+## Fitur Utama
+
+### 1. Keamanan Anti-Curang
+Sistem secara otomatis mendeteksi dan mencegah tindakan curang seperti:
+- **Anti Klik Kanan:** Mencegah copy-paste soal.
+- **Blur Detection:** Mendeteksi jika peserta berpindah tab atau membuka aplikasi lain.
+- **Fullscreen Mode:** Memaksa browser dalam mode layar penuh selama ujian.
+
+### 2. Pengacakan Soal Cerdas
+Setiap peserta mendapatkan urutan soal dan pilihan jawaban yang berbeda. Algoritma pengacakan memastikan bahwa tidak ada dua peserta yang mengerjakan soal yang sama persis secara bersamaan.
+
+### 3. Real-time Monitoring
+Pengawas dapat memantau status pengerjaan seluruh peserta secara real-time melalui dashboard admin yang interaktif.
+
+## Teknologi
+
+Aplikasi ini dibangun menggunakan arsitektur Monolithic dengan **MERN Stack**:
+- **Frontend:** React.js dengan Redux untuk manajemen state ujian.
+- **Backend:** Node.js & Express.js untuk API yang cepat.
+- **Database:** MongoDB untuk fleksibilitas penyimpanan struktur soal yang kompleks.

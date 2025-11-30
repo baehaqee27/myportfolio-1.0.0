@@ -6,6 +6,7 @@ import Link from "next/link";
 
 // 2. Import komponen Button
 import { Button } from "./ui/button";
+import { siteConfig } from "@/config/site";
 
 export default function Footer() {
   return (
@@ -13,17 +14,16 @@ export default function Footer() {
       <div className="container mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
         {/* Teks Copyright (sebelah kiri) */}
         <p className="text-sm text-muted-foreground text-center md:text-left">
-          © {new Date().getFullYear()} Ahmad Rizal Baehaqi (Mattrizz).
+          © {new Date().getFullYear()} {siteConfig.author.name} ({siteConfig.name}).
           <br />
-          Dibuat dengan "Uhuy" di Jawa Tengah.
+          {siteConfig.author.bio}
         </p>
 
         {/* Social Icons (sebelah kanan) */}
         <div className="flex gap-2">
           <Button asChild variant="ghost" size="icon">
-            {/* Ganti 'arizalb' dengan username GitHub-mu yang utama */}
             <Link
-              href="https://github.com/arizalb"
+              href={siteConfig.links.github}
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -33,16 +33,22 @@ export default function Footer() {
           </Button>
 
           <Button asChild variant="ghost" size="icon">
-            {/* Ganti '#' dengan URL LinkedIn-mu nanti */}
-            <Link href="#" target="_blank" rel="noopener noreferrer">
+            <Link
+              href={siteConfig.links.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <Linkedin className="h-5 w-5" />
               <span className="sr-only">LinkedIn</span>
             </Link>
           </Button>
 
           <Button asChild variant="ghost" size="icon">
-            {/* Ganti '#' dengan URL Twitter/X-mu nanti */}
-            <Link href="#" target="_blank" rel="noopener noreferrer">
+            <Link
+              href={siteConfig.links.twitter}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <Twitter className="h-5 w-5" />
               <span className="sr-only">Twitter</span>
             </Link>
