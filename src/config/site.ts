@@ -9,7 +9,7 @@ export const siteConfig = {
     github: "https://github.com/mattrizz",
     linkedin: "https://linkedin.com/in/mattrizz",
     instagram: "https://instagram.com/mattrizz",
-    email: "mailto:mattrizz@example.com",
+    email: "mailto:baehaqee@gmail.com",
   },
   author: {
     name: "Ahmad Rizal Baehaqi",

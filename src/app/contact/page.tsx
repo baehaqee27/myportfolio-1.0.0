@@ -22,6 +22,14 @@ export default function ContactPage() {
           <p className="text-lg md:text-xl text-muted-foreground font-mono">
             Ada ide proyek menarik? Mari kita diskusikan.
           </p>
+          <div className="flex justify-center">
+            <a
+              href="mailto:baehaqee@gmail.com"
+              className="text-primary hover:underline font-mono"
+            >
+              baehaqee@gmail.com
+            </a>
+          </div>
         </header>
 
         {/* Render Form-nya (Client Component) */}

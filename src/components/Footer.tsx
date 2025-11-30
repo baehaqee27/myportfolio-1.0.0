@@ -1,7 +1,7 @@
 // src/components/Footer.tsx
 
 // 1. Import ikon-ikon (kita udah instal 'lucide-react')
-import { Github, Linkedin, Twitter } from "lucide-react";
+import { Github, Linkedin, Twitter, Mail } from "lucide-react";
 import Link from "next/link";
 
 // 2. Import komponen Button
@@ -14,7 +14,8 @@ export default function Footer() {
       <div className="container mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
         {/* Teks Copyright (sebelah kiri) */}
         <p className="text-sm text-muted-foreground text-center md:text-left">
-          © {new Date().getFullYear()} {siteConfig.author.name} ({siteConfig.name}).
+          © {new Date().getFullYear()} {siteConfig.author.name} (
+          {siteConfig.name}).
           <br />
           {siteConfig.author.bio}
         </p>
@@ -51,6 +52,12 @@ export default function Footer() {
             >
               <Twitter className="h-5 w-5" />
               <span className="sr-only">Twitter</span>
+            </Link>
+          </Button>
+          <Button asChild variant="ghost" size="icon">
+            <Link href={siteConfig.links.email}>
+              <Mail className="h-5 w-5" />
+              <span className="sr-only">Email</span>
             </Link>
           </Button>
         </div>

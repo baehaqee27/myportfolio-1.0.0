@@ -7,7 +7,9 @@ import { z } from "zod";
 const contactSchema = z.object({
   nama: z.string().min(3, { message: "Nama harus diisi (min. 3 karakter)." }),
   email: z.string().email({ message: "Email tidak valid." }),
-  pesan: z.string().min(10, { message: "Pesan harus diisi (min. 10 karakter)." }),
+  pesan: z
+    .string()
+    .min(10, { message: "Pesan harus diisi (min. 10 karakter)." }),
 });
 
 // 2. Definisikan tipe 'state' yang akan dikembalikan
@@ -23,9 +25,8 @@ export type ContactFormState = {
 // 3. Ini adalah FUNGSI ACTION-nya
 export async function submitContactForm(
   prevState: ContactFormState, // State sebelumnya
-  formData: FormData         // Data dari form
+  formData: FormData // Data dari form
 ): Promise<ContactFormState> {
-
   // 4. Ubah FormData jadi objek biasa
   const data = Object.fromEntries(formData.entries());
 
@@ -42,16 +43,15 @@ export async function submitContactForm(
 
   // 6. SIMULASI KIRIM EMAIL (Di sini kamu nanti pasang Resend, dll.)
   try {
-    console.log("MENGIRIM PESAN:", validated.data);
+    console.log("MENGIRIM PESAN ke baehaqee@gmail.com:", validated.data);
     // Simulasikan delay jaringan
-    await new Promise(res => setTimeout(res, 2000)); 
+    await new Promise((res) => setTimeout(res, 2000));
 
     // PENTING: Di dunia nyata, di sinilah kamu panggil:
     // await resend.emails.send({ ... });
 
     console.log("PESAN TERKIRIM");
     return { message: "Sukses! Pesan Anda telah terkirim." };
-
   } catch (error) {
     return { message: "Error! Gagal mengirim pesan. Coba lagi nanti." };
   }
