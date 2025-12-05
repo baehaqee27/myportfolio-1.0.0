@@ -3,7 +3,7 @@ export const siteConfig = {
   url: "https://mattrizz-portfolio.vercel.app",
   ogImage: "https://mattrizz-portfolio.vercel.app/og.jpg",
   description:
-    "Portofolio resmi Ahmad Rizal Baehaqi (Mattrizz). Web Developer yang berdedikasi menciptakan pengalaman digital yang seamless, aesthetic, dan performan menggunakan teknologi modern seperti Next.js.",
+    "Portfolio of Ahmad Rizal Baehaqi (Mattrizz). A Creative Web Developer specializing in building seamless, aesthetic, and high-performance digital experiences using Next.js and modern web technologies.",
   links: {
     twitter: "https://twitter.com/mattrizz",
     github: "https://github.com/mattrizz",
@@ -14,8 +14,8 @@ export const siteConfig = {
   author: {
     name: "Ahmad Rizal Baehaqi",
     handle: "@mattrizz",
-    role: "Web Developer",
-    bio: "Halo! Saya Ahmad Rizal Baehaqi, seorang Web Developer yang memiliki ketertarikan mendalam pada dunia digital. Saya berdedikasi penuh untuk mengubah setiap ide kreatif menjadi sebuah website yang tidak hanya memiliki tampilan visual yang memukau, tetapi juga performa yang cepat dan responsif. Saya selalu mengikuti perkembangan teknologi terbaru untuk memastikan hasil karya saya tetap relevan, modern, dan tentunya memberikan pengalaman terbaik bagi setiap penggunanya.",
+    role: "Creative Web Developer",
+    bio: "Hi! I'm Ahmad Rizal Baehaqi, a Web Developer with a passion for digital innovation. I dedicate myself to transforming creative ideas into stunning, high-performance websites using the latest technologies.",
     avatar: "/images/profile.png",
   },
   keywords: [

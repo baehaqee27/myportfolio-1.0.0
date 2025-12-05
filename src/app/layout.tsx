@@ -57,11 +57,6 @@ export const metadata: Metadata = {
     images: [siteConfig.ogImage],
     creator: siteConfig.author.handle,
   },
-  icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon-16x16.png",
-    apple: "/apple-touch-icon.png",
-  },
   verification: {
     google: "UwNfNzT2K_X0ZDX6GkLPTFnIvVe9DJfUNcjUSj2IMqA",
   },

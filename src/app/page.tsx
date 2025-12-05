@@ -4,6 +4,13 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Code2, Palette, Terminal, Cpu } from "lucide-react";
 import HomeCodeShowcase from "@/components/HomeCodeShowcase";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Mattrizz | Creative Web Developer",
+  description:
+    "Portfolio of Ahmad Rizal Baehaqi (Mattrizz). Specializing in Next.js, React, and modern web design.",
+};
 
 export default function HomePage() {
   const posts = getPosts();
