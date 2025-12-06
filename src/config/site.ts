@@ -1,5 +1,5 @@
 export const siteConfig = {
-  name: "Mattrizz",
+  name: "Mattrizz | Ahmad Rizal Baehaqi",
   url: "https://mattrizz.web.id",
   ogImage: "https://mattrizz.web.id/og.jpg",
   description:
