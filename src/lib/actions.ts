@@ -41,18 +41,44 @@ export async function submitContactForm(
     };
   }
 
-  // 6. SIMULASI KIRIM EMAIL (Di sini kamu nanti pasang Resend, dll.)
+  // 6. KIRIM EMAIL via Resend
   try {
-    console.log("MENGIRIM PESAN ke baehaqee@gmail.com:", validated.data);
-    // Simulasikan delay jaringan
-    await new Promise((res) => setTimeout(res, 2000));
+    const { Resend } = await import("resend");
+    const resend = new Resend(process.env.RESEND_API_KEY);
+    // Import EmailTemplate dynamically to avoid issues if it was causing the Promise error
+    // But calling it as a function is correct for React.FC
+    const { EmailTemplate } = await import("@/components/EmailTemplate");
 
-    // PENTING: Di dunia nyata, di sinilah kamu panggil:
-    // await resend.emails.send({ ... });
+    const { data: emailData, error } = await resend.emails.send({
+      from: "Portfolio Contact <onboarding@resend.dev>",
+      to: ["baehaqee@gmail.com"],
+      subject: `Pesan Baru dari ${validated.data.nama}`,
+      // Use the component as a function call, which returns ReactNode.
+      // If TS complains about Promise, it might be due to the dynamic import context or Next.js types.
+      // Let's try to cast it or just ensure it's treated as a synchronous call.
+      react: EmailTemplate({
+        nama: validated.data.nama,
+        email: validated.data.email,
+        pesan: validated.data.pesan,
+      }) as React.ReactElement,
+    });
 
-    console.log("PESAN TERKIRIM");
+    if (error) {
+      console.error("Resend Error:", error);
+      return { message: "Gagal mengirim pesan. Silakan coba lagi." };
+    }
+
     return { message: "Sukses! Pesan Anda telah terkirim." };
-  } catch (error) {
-    return { message: "Error! Gagal mengirim pesan. Coba lagi nanti." };
+  } catch (error: any) {
+    console.error("Server Error Full:", error);
+    console.log(
+      "API Key Status:",
+      process.env.RESEND_API_KEY ? "Present" : "Missing"
+    );
+
+    // Return the actual error message for debugging
+    return {
+      message: `Error: ${error.message || "Unknown error"}. (API Key: ${process.env.RESEND_API_KEY ? "Loaded" : "Missing"})`,
+    };
   }
 }

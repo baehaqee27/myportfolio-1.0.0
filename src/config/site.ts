@@ -1,7 +1,7 @@
 export const siteConfig = {
   name: "Mattrizz",
-  url: "https://mattrizz-portfolio.vercel.app",
-  ogImage: "https://mattrizz-portfolio.vercel.app/og.jpg",
+  url: "https://mattrizz.web.id",
+  ogImage: "https://mattrizz.web.id/og.jpg",
   description:
     "Portfolio of Ahmad Rizal Baehaqi (Mattrizz). A Creative Web Developer specializing in building seamless, aesthetic, and high-performance digital experiences using Next.js and modern web technologies.",
   links: {
