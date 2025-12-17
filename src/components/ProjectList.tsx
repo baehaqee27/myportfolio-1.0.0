@@ -35,7 +35,7 @@ export default function ProjectList({ projects }: ProjectListProps) {
             {/* 2. Ubah <article> biar 'flex flex-col'
                    Ini penting biar stack-nya bisa nempel di bawah
             */}
-            <article className="glass-panel rounded-xl p-6 h-full hover:border-primary/50 hover:shadow-[0_0_20px_rgba(0,240,255,0.2)] transition-all duration-300 flex flex-col justify-between group">
+            <article className="bg-card/95 backdrop-blur-none md:bg-card/50 md:backdrop-blur-md border border-border shadow-sm md:shadow-xl rounded-xl p-6 h-full hover:border-primary/50 hover:shadow-[0_0_20px_rgba(0,240,255,0.2)] transition-all duration-300 flex flex-col justify-between group">
               {/* Bagian Atas (Teks) */}
               <div>
                 <h2 className="text-2xl font-bold font-mono group-hover:text-primary transition-colors">
