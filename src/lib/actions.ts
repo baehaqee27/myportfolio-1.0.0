@@ -50,7 +50,7 @@ export async function submitContactForm(
     const { EmailTemplate } = await import("@/components/EmailTemplate");
 
     const { data: emailData, error } = await resend.emails.send({
-      from: "Portfolio Contact <onboarding@resend.dev>",
+      from: "Portfolio Contact <contact@mattrizz.web.id>",
       to: ["baehaqee@gmail.com"],
       subject: `Pesan Baru dari ${validated.data.nama}`,
       // Use the component as a function call, which returns ReactNode.
