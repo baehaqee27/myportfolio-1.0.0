@@ -5,10 +5,10 @@ export const siteConfig = {
   description:
     "Portfolio of Ahmad Rizal Baehaqi (Mattrizz). A Creative Web Developer specializing in building seamless, aesthetic, and high-performance digital experiences using Next.js and modern web technologies.",
   links: {
-    twitter: "https://twitter.com/mattrizz",
-    github: "https://github.com/mattrizz",
-    linkedin: "https://linkedin.com/in/mattrizz",
-    instagram: "https://instagram.com/mattrizz",
+    twitter: "https://twitter.com/",
+    github: "https://github.com/baehaqee27",
+    linkedin: "https://linkedin.com/in/",
+    instagram: "https://instagram.com/rzlbaihaqi",
     email: "mailto:baehaqee@gmail.com",
   },
   author: {

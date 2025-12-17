@@ -96,7 +96,7 @@ export default function Header() {
 
             <SheetContent
               side="right"
-              className="flex flex-col h-full border-l border-border/10 bg-linear-to-b from-background to-background/95 backdrop-blur-none w-[85%] sm:w-[350px] p-6"
+              className="flex flex-col h-full border-l border-border shadow-2xl bg-background w-[85%] sm:w-[350px] p-6"
             >
               <SheetHeader className="text-left mb-6">
                 <SheetTitle className="text-xl font-bold tracking-wide bg-linear-to-r from-primary to-purple-500 bg-clip-text text-transparent">
